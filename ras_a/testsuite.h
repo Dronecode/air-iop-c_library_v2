@@ -1,6 +1,6 @@
 /** @file
  *    @brief MAVLink comm protocol testsuite generated from ras_a.xml
- *    @see http://qgroundcontrol.org/mavlink/
+ *    @see https://mavlink.io/en/
  */
 #pragma once
 #ifndef RAS_A_TESTSUITE_H
@@ -110,6 +110,11 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
     mavlink_msg_poi_report_send(MAVLINK_COMM_1 , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg , packet1.height , packet1.width , packet1.depth , packet1.geometry , packet1.approach_vector_start , packet1.approach_vector_end , packet1.approach_velocity , packet1.name , packet1.app6_symbol );
     mavlink_msg_poi_report_decode(last_msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
+
+#ifdef MAVLINK_HAVE_GET_MESSAGE_INFO
+    MAVLINK_ASSERT(mavlink_get_message_info_by_name("POI_REPORT") != NULL);
+    MAVLINK_ASSERT(mavlink_get_message_info_by_id(MAVLINK_MSG_ID_POI_REPORT) != NULL);
+#endif
 }
 
 static void mavlink_test_ras_a(uint8_t system_id, uint8_t component_id, mavlink_message_t *last_msg)
