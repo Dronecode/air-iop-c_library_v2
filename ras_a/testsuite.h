@@ -37,13 +37,13 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
         uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
         uint16_t i;
     mavlink_poi_report_t packet_in = {
-        93372036854775807ULL,93372036854776311ULL,93372036854776815ULL,963498712,963498920,963499128,269.0,297.0,325.0,963499960,381.0,409.0,437.0,{ 465.0, 466.0, 467.0, 468.0 },577.0,605.0,633.0,661.0,689.0,717.0,745.0,773.0,{ 801.0, 802.0, 803.0 },{ 885.0, 886.0, 887.0 },{ 969.0, 970.0, 971.0 },24931,71,138,205,16,83,150,"ABCDEFGHIJKLMNOPQRSTUVWXYZABCDE","GHIJKLMNOPQRSTUVWXYZABCDEFGHIJ"
+        93372036854775807ULL,93372036854776311ULL,963498296,963498504,963498712,963498920,241.0,269.0,297.0,963499752,353.0,381.0,409.0,{ 437.0, 438.0, 439.0, 440.0 },549.0,577.0,605.0,633.0,661.0,689.0,717.0,745.0,{ 773.0, 774.0, 775.0 },{ 857.0, 858.0, 859.0 },{ 941.0, 942.0, 943.0 },24723,59,126,193,4,71,138,"WXYZABCDEFGHIJKLMNOPQRSTUVWXYZA","CDEFGHIJKLMNOPQRSTUVWXYZABCDEF"
     };
     mavlink_poi_report_t packet1, packet2;
         memset(&packet1, 0, sizeof(packet1));
-        packet1.uid = packet_in.uid;
         packet1.time_utc_detected = packet_in.time_utc_detected;
         packet1.time_utc_updated = packet_in.time_utc_updated;
+        packet1.uid = packet_in.uid;
         packet1.time_boot_ms = packet_in.time_boot_ms;
         packet1.latitude = packet_in.latitude;
         packet1.longitude = packet_in.longitude;
