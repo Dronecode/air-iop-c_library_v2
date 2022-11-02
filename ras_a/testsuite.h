@@ -37,7 +37,7 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
         uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
         uint16_t i;
     mavlink_poi_report_t packet_in = {
-        93372036854775807ULL,93372036854776311ULL,963498296,963498504,963498712,963498920,241.0,269.0,297.0,963499752,353.0,381.0,409.0,{ 437.0, 438.0, 439.0, 440.0 },549.0,577.0,605.0,633.0,661.0,689.0,717.0,745.0,{ 773.0, 774.0, 775.0 },{ 857.0, 858.0, 859.0 },{ 941.0, 942.0, 943.0 },24723,59,126,193,4,71,138,"WXYZABCDEFGHIJKLMNOPQRSTUVWXYZA","CDEFGHIJKLMNOPQRSTUVWXYZABCDEF"
+        93372036854775807ULL,93372036854776311ULL,963498296,963498504,963498712,963498920,241.0,269.0,297.0,963499752,353.0,381.0,409.0,{ 437.0, 438.0, 439.0, 440.0 },549.0,577.0,605.0,633.0,661.0,22227,171,238,49,116,183
     };
     mavlink_poi_report_t packet1, packet2;
         memset(&packet1, 0, sizeof(packet1));
@@ -59,23 +59,14 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
         packet1.vel_e = packet_in.vel_e;
         packet1.vel_d = packet_in.vel_d;
         packet1.hdg = packet_in.hdg;
-        packet1.height = packet_in.height;
-        packet1.width = packet_in.width;
-        packet1.depth = packet_in.depth;
         packet1.ttl = packet_in.ttl;
         packet1.confidence_overall = packet_in.confidence_overall;
         packet1.confidence_detection = packet_in.confidence_detection;
         packet1.confidence_classification = packet_in.confidence_classification;
         packet1.confidence_localization = packet_in.confidence_localization;
         packet1.status_flags = packet_in.status_flags;
-        packet1.geometry = packet_in.geometry;
         
         mav_array_memcpy(packet1.q, packet_in.q, sizeof(float)*4);
-        mav_array_memcpy(packet1.approach_vector_start, packet_in.approach_vector_start, sizeof(float)*3);
-        mav_array_memcpy(packet1.approach_vector_end, packet_in.approach_vector_end, sizeof(float)*3);
-        mav_array_memcpy(packet1.approach_velocity, packet_in.approach_velocity, sizeof(float)*3);
-        mav_array_memcpy(packet1.name, packet_in.name, sizeof(char)*32);
-        mav_array_memcpy(packet1.app6_symbol, packet_in.app6_symbol, sizeof(char)*31);
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
         if (status->flags & MAVLINK_STATUS_FLAG_OUT_MAVLINK1) {
@@ -89,12 +80,12 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_poi_report_pack(system_id, component_id, &msg , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg , packet1.height , packet1.width , packet1.depth , packet1.geometry , packet1.approach_vector_start , packet1.approach_vector_end , packet1.approach_velocity , packet1.name , packet1.app6_symbol );
+    mavlink_msg_poi_report_pack(system_id, component_id, &msg , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg );
     mavlink_msg_poi_report_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_poi_report_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg , packet1.height , packet1.width , packet1.depth , packet1.geometry , packet1.approach_vector_start , packet1.approach_vector_end , packet1.approach_velocity , packet1.name , packet1.app6_symbol );
+    mavlink_msg_poi_report_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg );
     mavlink_msg_poi_report_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
@@ -107,7 +98,7 @@ static void mavlink_test_poi_report(uint8_t system_id, uint8_t component_id, mav
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
         
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_poi_report_send(MAVLINK_COMM_1 , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg , packet1.height , packet1.width , packet1.depth , packet1.geometry , packet1.approach_vector_start , packet1.approach_vector_end , packet1.approach_velocity , packet1.name , packet1.app6_symbol );
+    mavlink_msg_poi_report_send(MAVLINK_COMM_1 , packet1.uid , packet1.time_boot_ms , packet1.time_utc_detected , packet1.time_utc_updated , packet1.confidence_overall , packet1.confidence_detection , packet1.confidence_classification , packet1.confidence_localization , packet1.ttl , packet1.status_flags , packet1.latitude , packet1.longitude , packet1.alt_msl , packet1.alt_ellip , packet1.alt_ground , packet1.classification , packet1.x , packet1.y , packet1.z , packet1.q , packet1.dist , packet1.vel_n , packet1.vel_e , packet1.vel_d , packet1.hdg );
     mavlink_msg_poi_report_decode(last_msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
