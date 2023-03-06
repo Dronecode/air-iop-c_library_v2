@@ -1,7 +1,7 @@
 #pragma once
 // MESSAGE POI_REPORT PACKING
 
-#define MAVLINK_MSG_ID_POI_REPORT 238
+#define MAVLINK_MSG_ID_POI_REPORT 51000
 
 
 typedef struct __mavlink_poi_report_t {
@@ -34,17 +34,17 @@ typedef struct __mavlink_poi_report_t {
 
 #define MAVLINK_MSG_ID_POI_REPORT_LEN 103
 #define MAVLINK_MSG_ID_POI_REPORT_MIN_LEN 103
-#define MAVLINK_MSG_ID_238_LEN 103
-#define MAVLINK_MSG_ID_238_MIN_LEN 103
+#define MAVLINK_MSG_ID_51000_LEN 103
+#define MAVLINK_MSG_ID_51000_MIN_LEN 103
 
 #define MAVLINK_MSG_ID_POI_REPORT_CRC 91
-#define MAVLINK_MSG_ID_238_CRC 91
+#define MAVLINK_MSG_ID_51000_CRC 91
 
 #define MAVLINK_MSG_POI_REPORT_FIELD_Q_LEN 4
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_POI_REPORT { \
-    238, \
+    51000, \
     "POI_REPORT", \
     25, \
     {  { "uid", NULL, MAVLINK_TYPE_UINT32_T, 0, 16, offsetof(mavlink_poi_report_t, uid) }, \

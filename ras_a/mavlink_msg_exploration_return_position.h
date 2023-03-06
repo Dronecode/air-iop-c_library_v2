@@ -1,7 +1,7 @@
 #pragma once
 // MESSAGE EXPLORATION_RETURN_POSITION PACKING
 
-#define MAVLINK_MSG_ID_EXPLORATION_RETURN_POSITION 452
+#define MAVLINK_MSG_ID_EXPLORATION_RETURN_POSITION 51102
 
 
 typedef struct __mavlink_exploration_return_position_t {
@@ -19,17 +19,17 @@ typedef struct __mavlink_exploration_return_position_t {
 
 #define MAVLINK_MSG_ID_EXPLORATION_RETURN_POSITION_LEN 44
 #define MAVLINK_MSG_ID_EXPLORATION_RETURN_POSITION_MIN_LEN 44
-#define MAVLINK_MSG_ID_452_LEN 44
-#define MAVLINK_MSG_ID_452_MIN_LEN 44
+#define MAVLINK_MSG_ID_51102_LEN 44
+#define MAVLINK_MSG_ID_51102_MIN_LEN 44
 
 #define MAVLINK_MSG_ID_EXPLORATION_RETURN_POSITION_CRC 142
-#define MAVLINK_MSG_ID_452_CRC 142
+#define MAVLINK_MSG_ID_51102_CRC 142
 
 
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_EXPLORATION_RETURN_POSITION { \
-    452, \
+    51102, \
     "EXPLORATION_RETURN_POSITION", \
     10, \
     {  { "time_usec", NULL, MAVLINK_TYPE_UINT64_T, 0, 0, offsetof(mavlink_exploration_return_position_t, time_usec) }, \

@@ -1,7 +1,7 @@
 #pragma once
 // MESSAGE EXPLORATION_INFO PACKING
 
-#define MAVLINK_MSG_ID_EXPLORATION_INFO 451
+#define MAVLINK_MSG_ID_EXPLORATION_INFO 51101
 
 
 typedef struct __mavlink_exploration_info_t {
@@ -32,17 +32,17 @@ typedef struct __mavlink_exploration_info_t {
 
 #define MAVLINK_MSG_ID_EXPLORATION_INFO_LEN 86
 #define MAVLINK_MSG_ID_EXPLORATION_INFO_MIN_LEN 86
-#define MAVLINK_MSG_ID_451_LEN 86
-#define MAVLINK_MSG_ID_451_MIN_LEN 86
+#define MAVLINK_MSG_ID_51101_LEN 86
+#define MAVLINK_MSG_ID_51101_MIN_LEN 86
 
 #define MAVLINK_MSG_ID_EXPLORATION_INFO_CRC 147
-#define MAVLINK_MSG_ID_451_CRC 147
+#define MAVLINK_MSG_ID_51101_CRC 147
 
 
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_EXPLORATION_INFO { \
-    451, \
+    51101, \
     "EXPLORATION_INFO", \
     23, \
     {  { "exploration_id", NULL, MAVLINK_TYPE_UINT8_T, 0, 84, offsetof(mavlink_exploration_info_t, exploration_id) }, \

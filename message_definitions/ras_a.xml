@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <mavlink>
+  <!-- Contact: Nuno Marques <n.marques21@hotmail.com> | Github: TSC21 -->
+  <!-- message ID range: 51000 - 51999 -->
+  <!-- command ID range: 51000 - 51999 -->
   <include>development.xml</include>
   <version>0</version>
   <dialect>0</dialect>
@@ -34,7 +37,7 @@
     <!-- ALL the entries in the MAV_CMD enum have a maximum of 7 parameters -->
     <enum name="MAV_CMD">
       <description>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</description>
-      <entry value="40500" name="MAV_CMD_GO_THROUGH_PORTAL" hasLocation="true" isDestination="false">
+      <entry value="51000" name="MAV_CMD_GO_THROUGH_PORTAL" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -51,7 +54,7 @@
         <param index="6" label="Position Y or Longitude">Y (mE4) or Longitude (degE7) (WGS84) coordinate (depending on MAV_FRAME) of the portal position. INT32_MAX if unknown (or if using param 1 to set the portal).</param>
         <param index="7" label="Position Z or Altitude (MSL)">Z or Altitude (MSL) coordinate (depending on MAV_FRAME) of the portal position. NaN when unknown or when using param 1 to set the portal.</param>
       </entry>
-      <entry value="40501" name="MAV_CMD_SET_INGRESS_PORTAL" hasLocation="true" isDestination="false">
+      <entry value="51001" name="MAV_CMD_SET_INGRESS_PORTAL" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -67,7 +70,7 @@
         <param index="6" label="Approach vector final point Y or Longitude">Y (mE4) or Longitude (degE7) (WGS84) coordinate (depending on MAV_FRAME) of the final point of the approach vector to the portal. INT32_MAX if unknown.</param>
         <param index="7" label="Approach vector final point Z or Altitude (MSL)" units="m">Z or Altitude (MSL) coordinate (depending on MAV_FRAME) of the final point of the approach vector to the portal. NaN if unknown.</param>
       </entry>
-      <entry value="40502" name="MAV_CMD_SET_EGRESS_PORTAL" hasLocation="true" isDestination="false">
+      <entry value="51002" name="MAV_CMD_SET_EGRESS_PORTAL" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -83,7 +86,7 @@
         <param index="6" label="Approach vector final point Y or Longitude">Y (mE4) or Longitude (degE7) (WGS84) coordinate (depending on MAV_FRAME) of the final point of the approach vector to the portal. INT32_MAX if unknown.</param>
         <param index="7" label="Approach vector final point Z or Altitude (MSL)" units="m">Z or Altitude (MSL) coordinate (depending on MAV_FRAME) of the final point of the approach vector to the portal. NaN if unknown.</param>
       </entry>
-      <entry value="40510" name="MAV_CMD_DO_EXPLORATION" hasLocation="true" isDestination="false">
+      <entry value="51010" name="MAV_CMD_DO_EXPLORATION" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -102,7 +105,7 @@
         <param index="6" label="Position Y or Longitude">Y (mE4) or Longitude (degE7) (WGS84) coordinate (depending on MAV_FRAME) of the portal position. INT32_MAX if unknown (or if using param 4 to set the portal).</param>
         <param index="7" label="Position Z or Altitude (MSL)" units="m">Z or Altitude (MSL) coordinate (depending on MAV_FRAME) of the portal position. NaN when unknown or when using param 4 to set the portal ID.</param>
       </entry>
-      <entry value="40511" name="MAV_CMD_STOP_EXPLORATION" hasLocation="false" isDestination="false">
+      <entry value="51011" name="MAV_CMD_STOP_EXPLORATION" hasLocation="false" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -118,7 +121,7 @@
         <param index="6" reserved="true" default="0"/>
         <param index="7" reserved="true" default="NaN"/>
       </entry>
-      <entry value="40512" name="MAV_CMD_SET_EXPLORATION_RETURN_POS" hasLocation="true" isDestination="false">
+      <entry value="51012" name="MAV_CMD_SET_EXPLORATION_RETURN_POS" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -134,7 +137,7 @@
         <param index="6" label="Position Y or Longitude">Y (mE4) or Longitude (degE7) (WGS84) coordinate (depending on MAV_FRAME) of the return position. INT32_MAX if unknown.</param>
         <param index="7" label="Position Z or Altitude (MSL)" units="m">Z or Altitude (MSL) coordinate (depending on MAV_FRAME) of the return position. NaN if unknown.</param>
       </entry>
-      <entry value="40513" name="MAV_CMD_DO_EXPLORATION_RETURN" hasLocation="false" isDestination="false">
+      <entry value="51013" name="MAV_CMD_DO_EXPLORATION_RETURN" hasLocation="false" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>Return to a system-defined position after exploration.</description>
@@ -146,7 +149,7 @@
         <param index="6" reserved="true" default="0"/>
         <param index="7" reserved="true" default="NaN"/>
       </entry>
-      <entry value="40514" name="MAV_CMD_SET_EXPLORATION_BOUNDARIES" hasLocation="true" isDestination="false">
+      <entry value="51014" name="MAV_CMD_SET_EXPLORATION_BOUNDARIES" hasLocation="true" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>
@@ -166,7 +169,7 @@
         <param index="6" label="Y2 or Longitude 2">Local Y (mE4) or Longitude (degE7) (WGS84) (depending on MAV_FRAME) of point 2 of the exploration 3D space boundaries cuboid. INT32_MAX if not applicable.</param>
         <param index="7" label="Z3 or Altitude 3" units="m">Local Z or Altitude (MSL) (depending on MAV_FRAME) point 3 of the exploration 3D space boundaries cuboid. This also represents the height of the bottom plane of the cuboid. NaN if not applicable.</param>
       </entry>
-      <entry value="41050" name="MAV_CMD_SET_POI_FOCUS" hasLocation="false" isDestination="false">
+      <entry value="51015" name="MAV_CMD_SET_POI_FOCUS" hasLocation="false" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>Sets a POI at the current focus point of the camera frame. This assumes that the camera system has the ability to geo-locate the current focus point.</description>
@@ -174,7 +177,7 @@
         <param index="2" label="X Position in the camera frame" minValue="0" increment="1">Position given by the number of pixels in X direction of the camera frame. Origin on the bottom left corner of the camera frame.</param>
         <param index="3" label="Y Position in the camera frame" minValue="0" increment="1">Position given by the number of pixels in Y direction of the camera frame. Origin on the bottom left corner of the camera frame.</param>
       </entry>
-      <entry value="41051" name="MAV_CMD_DO_FOLLOW_POI" hasLocation="false" isDestination="false">
+      <entry value="51016" name="MAV_CMD_DO_FOLLOW_POI" hasLocation="false" isDestination="false">
         <wip/>
         <!-- This command is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
         <description>Invoke platform to begin following a POI as a subject</description>
@@ -384,7 +387,7 @@
     </enum>
   </enums>
   <messages>
-    <message id="238" name="POI_REPORT">
+    <message id="51000" name="POI_REPORT">
       <wip/>
       <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
       <description>Reports information for a detected Point-of-Interest (POI).
@@ -423,7 +426,7 @@
       <field type="float" name="vel_d" units="m/s" invalid="NaN">Down velocity of the POI. NAN if unknown.</field>
       <field type="float" name="hdg" units="rad" invalid="NaN">Heading of the POI in the NED frame. NAN if unknown.</field>
     </message>
-    <message id="450" name="EXPLORATION_STATUS">
+    <message id="51100" name="EXPLORATION_STATUS">
       <wip/>
       <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
       <description>Provides status over an exploration task. The message should, by default, be streamed at 1Hz.</description>
@@ -435,7 +438,7 @@
       <field type="uint16_t" name="flags" enum="MAV_EXPLORATION_STATUS_FLAGS">Bitmap of the exploration task status flags.</field>
       <field type="int8_t" name="level" invalid="INT8_MAX">In an indoor exploration task, it indicates the floor/level of the structure that is currently being explored. The level where the vehicle started the exploration is considered the level 0. INT8_MAX when unknown, not capable to provide or not applicable.</field>
     </message>
-    <message id="451" name="EXPLORATION_INFO">
+    <message id="51101" name="EXPLORATION_INFO">
       <wip/>
       <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
       <description>Provides configuration information about an exploration task.
@@ -466,7 +469,7 @@
       <field type="int32_t" name="egress_portal_lon" units="degE7" invalid="INT32_MAX">Currently defined egress portal Longitude (WGS84). INT32_MAX if unknown, not applicable or when egress_portal_id is set and different from UINT32_MAX.</field>
       <field type="float" name="egress_portal_alt" units="m" invalid="NaN">Currently defined egress portal Altitude (MSL). NaN if unknown, not applicable or when egress_portal_id is set and different from UINT32_MAX.</field>
     </message>
-    <message id="452" name="EXPLORATION_RETURN_POSITION">
+    <message id="51102" name="EXPLORATION_RETURN_POSITION">
       <wip/>
       <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
       <description>Provides the return-from-exploration position when an exploration is completed (e.g. volume set by the exploration boundaries does not have new open areas for
