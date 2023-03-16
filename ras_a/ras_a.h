@@ -10,7 +10,7 @@
     #error Wrong include order: MAVLINK_RAS_A.H MUST NOT BE DIRECTLY USED. Include mavlink.h from the same directory instead or set ALL AND EVERY defines from MAVLINK.H manually accordingly, including the #define MAVLINK_H call.
 #endif
 
-#define MAVLINK_RAS_A_XML_HASH 871442762284884770
+#define MAVLINK_RAS_A_XML_HASH 7364174363412302063
 
 #ifdef __cplusplus
 extern "C" {
@@ -401,9 +401,10 @@ typedef enum MAV_CMD
           p1(x1, y1, z+h), p2(x2, y2, z+h) and p3(x1, y1, z). COMMAND_INT should be used with its MAV_FRAME set appropriately. This will affect the coordinates
           used for the boundaries cuboid (MAV_FRAME_GLOBAL means global coordinates are being used, while MAV_FRAME_LOCAL_NED means local NED coordinates are being used).
          |ID of the exploration task to set these boundaries to. Set to UINT8_MAX if not applicable or/and to set these boundaries to the current running or active exploration task.| Exploration 3D space boundaries cuboid height. The Z local coordinate or altitude (MSL) of point 1 and 2 are computed by the sum of this height with the local Z or altitude (MSL) of point 3, i.e Z1 = Z2 = Z3 + cuboid height. NaN if not applicable.| Local X (m) or Latitude (deg) (WGS84) (depending on MAV_FRAME) of point 1 of the exploration 3D space boundaries cuboid. NaN if not applicable.| Local Y (m) or Longitude (deg) (WGS84) (depending on MAV_FRAME) of point 1 of the exploration 3D space boundaries cuboid. NaN if not applicable.| Local X (mE4) or Latitude (degE7) (WGS84) (depending on MAV_FRAME) of point 2 of the exploration 3D space boundaries cuboid. INT32_MAX if not applicable.| Local Y (mE4) or Longitude (degE7) (WGS84) (depending on MAV_FRAME) of point 2 of the exploration 3D space boundaries cuboid. INT32_MAX if not applicable.| Local Z or Altitude (MSL) (depending on MAV_FRAME) point 3 of the exploration 3D space boundaries cuboid. This also represents the height of the bottom plane of the cuboid. NaN if not applicable.|  */
-   MAV_CMD_SET_POI_FOCUS=51015, /* Sets a POI at the current focus point of the camera frame. This assumes that the camera system has the ability to geo-locate the current focus point. |Operation mode. 0 = set POI at current location; 1 = set POI at current location and track it.| Position given by the number of pixels in X direction of the camera frame. Origin on the bottom left corner of the camera frame.| Position given by the number of pixels in Y direction of the camera frame. Origin on the bottom left corner of the camera frame.| Reserved (default:0)| Reserved (default:0)| Reserved (default:0)| Reserved (default:0)|  */
-   MAV_CMD_DO_FOLLOW_POI=51016, /* Invoke platform to begin following a POI as a subject |UID of the POI to follow| Mode by which to follow the POI| The desired vertical offset in meters to attempt to maintain relative to the altitude of the subject.  Positive if following from above.  NaN if no preference.| Distance in 3D meters to attempt to maintain from target subject| Bearing in degrees from POI to attempt to maintain| Reserved (default:0)| Reserved (default:0)|  */
-   MAV_CMD_ENUM_END=51017, /*  | */
+   MAV_CMD_SET_POI_FOCUS=51020, /* Sets a POI at the current focus point of the camera frame. This assumes that the camera system has the ability to geo-locate the current focus point. |Operation mode. 0 = set POI at current location; 1 = set POI at current location and track it.| Position given by the number of pixels in X direction of the camera frame. Origin on the bottom left corner of the camera frame.| Position given by the number of pixels in Y direction of the camera frame. Origin on the bottom left corner of the camera frame.| Reserved (default:0)| Reserved (default:0)| Reserved (default:0)| Reserved (default:0)|  */
+   MAV_CMD_DO_FOLLOW_POI=51021, /* Invoke platform to begin following a POI as a subject |UID of the POI to follow| Mode by which to follow the POI| The desired vertical offset in meters to attempt to maintain relative to the altitude of the subject.  Positive if following from above.  NaN if no preference.| Distance in 3D meters to attempt to maintain from target subject| Bearing in degrees from POI to attempt to maintain| Reserved (default:0)| Reserved (default:0)|  */
+   MAV_CMD_COMPONENT_CONTROL=51050, /* Control the state or functionality of system components. |Component ID of the system component to be controlled.| Control command type being sent to the system component.| Identifier for the component instance. It matches an internal mapping on the system to a component/service/process ID. This is applicable when there exists a system/service manager that handles this command and interfaces with components and its instances, or when the component itself is aware of its instance number (when the target component of the command is the component to control). If there is only one instance of the component, or when one wants to control all the instances of the component, set the field to 0.| Empty.| Empty.| Empty.| Empty.|  */
+   MAV_CMD_ENUM_END=51051, /*  | */
 } MAV_CMD;
 #endif
 
@@ -504,6 +505,21 @@ typedef enum FOLLOW_MODE
    TRIPOD=3, /* Platform stays stationary but its sensors follow the subject.  Ignores subject_follow_dist and subject_follow_bearing | */
    FOLLOW_MODE_ENUM_END=4, /*  | */
 } FOLLOW_MODE;
+#endif
+
+/** @brief Type of controls or state changes for system components. */
+#ifndef HAVE_ENUM_COMPONENT_CONTROL
+#define HAVE_ENUM_COMPONENT_CONTROL
+typedef enum COMPONENT_CONTROL
+{
+   COMPONENT_CONTROL_START=1, /* Start/turn-on system component. | */
+   COMPONENT_CONTROL_STOP=2, /* Stop/turn-off system component. | */
+   COMPONENT_CONTROL_RESTART=3, /* Restart/reboot system component. | */
+   COMPONENT_CONTROL_RESTART_AND_KEEP_BL=4, /* Restart/reboot system component and keep it in the bootloader until upgraded. | */
+   COMPONENT_CONTROL_ENABLE=5, /* Enable system component. Used to switch a system component from an idle state to an active state. | */
+   COMPONENT_CONTROL_DISABLE=6, /* Disable system component. Used to switch a system component from an active state to an idle state. | */
+   COMPONENT_CONTROL_ENUM_END=7, /*  | */
+} COMPONENT_CONTROL;
 #endif
 
 // MAVLINK VERSION
