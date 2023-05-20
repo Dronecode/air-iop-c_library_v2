@@ -7,6 +7,12 @@
   <version>0</version>
   <dialect>0</dialect>
   <enums>
+    <enum name="MAV_TYPE">
+      <description>MAVLINK component type reported in HEARTBEAT message.</description>
+      <entry value="43" name="MAV_TYPE_GENERIC_COMPONENT">
+        <description>Generic component which implements the generic component attribute discovery and control interface through mavlink parameter exchange.</description>
+      </entry>
+    </enum>
     <enum name="MAV_AUTOPILOT">
       <description>Micro air vehicle / autopilot classes. This identifies the individual model.</description>
       <entry value="21" name="MAV_AUTOPILOT_SKYDIO">
@@ -23,6 +29,9 @@
       <!-- Component ids from 25-99 are reserved for private OEM component definitions (and may be incompatible with other private components). Note that if this range is later reduced, higher ids will be reallocated first. -->
       <entry value="199" name="MAV_COMP_ID_AUTONOMY_ENGINE">
         <description>Component that manages autonomy behaviors/subsystems above and beyond those implemented by the autopilot (MAV_COMP_ID_AUTOPILOT1). Managed subsystems could include Kalman Filters integrating sensors not interfaced to the autopilot, obstacle avoidance, path planning, vision systems and other sensors. The autonomy engine may implement a superset of the functionality available from other seldom-used components such as MAV_COMP_ID_OBSTACLE_AVOIDANCE, MAV_COMP_ID_PATHPLANNER, MAV_COMP_ID_OBSTACLE_AVOIDANCE, and MAV_COMP_ID_ONBOARD_COMPUTER.</description>
+      </entry>
+      <entry value="254" name="MAV_COMP_ID_MONOLITHIC">
+        <description>A single component which presents many attributes and capabilities which prevent it from being binned into any of the other IDs in this enum. For context, refer to the monolithic generic component example in air-iop documentation release 1.2</description>
       </entry>
     </enum>
     <enum name="MAV_PROTOCOL_CAPABILITY" bitmask="true">

@@ -10,7 +10,7 @@
     #error Wrong include order: MAVLINK_RAS_A.H MUST NOT BE DIRECTLY USED. Include mavlink.h from the same directory instead or set ALL AND EVERY defines from MAVLINK.H manually accordingly, including the #define MAVLINK_H call.
 #endif
 
-#define MAVLINK_RAS_A_XML_HASH -2327755024570818519
+#define MAVLINK_RAS_A_XML_HASH -1491030879643911365
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,6 +32,59 @@ extern "C" {
 
 // ENUM DEFINITIONS
 
+
+/** @brief MAVLINK component type reported in HEARTBEAT message. */
+#ifndef HAVE_ENUM_MAV_TYPE
+#define HAVE_ENUM_MAV_TYPE
+typedef enum MAV_TYPE
+{
+   MAV_TYPE_GENERIC=0, /* Generic micro air vehicle | */
+   MAV_TYPE_FIXED_WING=1, /* Fixed wing aircraft. | */
+   MAV_TYPE_QUADROTOR=2, /* Quadrotor | */
+   MAV_TYPE_COAXIAL=3, /* Coaxial helicopter | */
+   MAV_TYPE_HELICOPTER=4, /* Normal helicopter with tail rotor. | */
+   MAV_TYPE_ANTENNA_TRACKER=5, /* Ground installation | */
+   MAV_TYPE_GCS=6, /* Operator control unit / ground control station | */
+   MAV_TYPE_AIRSHIP=7, /* Airship, controlled | */
+   MAV_TYPE_FREE_BALLOON=8, /* Free balloon, uncontrolled | */
+   MAV_TYPE_ROCKET=9, /* Rocket | */
+   MAV_TYPE_GROUND_ROVER=10, /* Ground rover | */
+   MAV_TYPE_SURFACE_BOAT=11, /* Surface vessel, boat, ship | */
+   MAV_TYPE_SUBMARINE=12, /* Submarine | */
+   MAV_TYPE_HEXAROTOR=13, /* Hexarotor | */
+   MAV_TYPE_OCTOROTOR=14, /* Octorotor | */
+   MAV_TYPE_TRICOPTER=15, /* Tricopter | */
+   MAV_TYPE_FLAPPING_WING=16, /* Flapping wing | */
+   MAV_TYPE_KITE=17, /* Kite | */
+   MAV_TYPE_ONBOARD_CONTROLLER=18, /* Onboard companion controller | */
+   MAV_TYPE_VTOL_TAILSITTER_DUOROTOR=19, /* Two-rotor Tailsitter VTOL that additionally uses control surfaces in vertical operation. Note, value previously named MAV_TYPE_VTOL_DUOROTOR. | */
+   MAV_TYPE_VTOL_TAILSITTER_QUADROTOR=20, /* Quad-rotor Tailsitter VTOL using a V-shaped quad config in vertical operation. Note: value previously named MAV_TYPE_VTOL_QUADROTOR. | */
+   MAV_TYPE_VTOL_TILTROTOR=21, /* Tiltrotor VTOL. Fuselage and wings stay (nominally) horizontal in all flight phases. It able to tilt (some) rotors to provide thrust in cruise flight. | */
+   MAV_TYPE_VTOL_FIXEDROTOR=22, /* VTOL with separate fixed rotors for hover and cruise flight. Fuselage and wings stay (nominally) horizontal in all flight phases. | */
+   MAV_TYPE_VTOL_TAILSITTER=23, /* Tailsitter VTOL. Fuselage and wings orientation changes depending on flight phase: vertical for hover, horizontal for cruise. Use more specific VTOL MAV_TYPE_VTOL_DUOROTOR or MAV_TYPE_VTOL_QUADROTOR if appropriate. | */
+   MAV_TYPE_VTOL_TILTWING=24, /* Tiltwing VTOL. Fuselage stays horizontal in all flight phases. The whole wing, along with any attached engine, can tilt between vertical and horizontal mode. | */
+   MAV_TYPE_VTOL_RESERVED5=25, /* VTOL reserved 5 | */
+   MAV_TYPE_GIMBAL=26, /* Gimbal | */
+   MAV_TYPE_ADSB=27, /* ADSB system | */
+   MAV_TYPE_PARAFOIL=28, /* Steerable, nonrigid airfoil | */
+   MAV_TYPE_DODECAROTOR=29, /* Dodecarotor | */
+   MAV_TYPE_CAMERA=30, /* Camera | */
+   MAV_TYPE_CHARGING_STATION=31, /* Charging station | */
+   MAV_TYPE_FLARM=32, /* FLARM collision avoidance system | */
+   MAV_TYPE_SERVO=33, /* Servo | */
+   MAV_TYPE_ODID=34, /* Open Drone ID. See https://mavlink.io/en/services/opendroneid.html. | */
+   MAV_TYPE_DECAROTOR=35, /* Decarotor | */
+   MAV_TYPE_BATTERY=36, /* Battery | */
+   MAV_TYPE_PARACHUTE=37, /* Parachute | */
+   MAV_TYPE_LOG=38, /* Log | */
+   MAV_TYPE_OSD=39, /* OSD | */
+   MAV_TYPE_IMU=40, /* IMU | */
+   MAV_TYPE_GPS=41, /* GPS | */
+   MAV_TYPE_WINCH=42, /* Winch | */
+   MAV_TYPE_GENERIC_COMPONENT=43, /* Generic component which implements the generic component attribute discovery and control interface through mavlink parameter exchange. | */
+   MAV_TYPE_ENUM_END=44, /*  | */
+} MAV_TYPE;
+#endif
 
 /** @brief Micro air vehicle / autopilot classes. This identifies the individual model. */
 #ifndef HAVE_ENUM_MAV_AUTOPILOT
@@ -208,7 +261,8 @@ typedef enum MAV_COMPONENT
    MAV_COMP_ID_UART_BRIDGE=241, /* Component to bridge to UART (i.e. from UDP). | */
    MAV_COMP_ID_TUNNEL_NODE=242, /* Component handling TUNNEL messages (e.g. vendor specific GUI of a component). | */
    MAV_COMP_ID_SYSTEM_CONTROL=250, /* Deprecated, don't use. Component for handling system messages (e.g. to ARM, takeoff, etc.). | */
-   MAV_COMPONENT_ENUM_END=251, /*  | */
+   MAV_COMP_ID_MONOLITHIC=254, /* A single component which presents many attributes and capabilities which prevent it from being binned into any of the other IDs in this enum. For context, refer to the monolithic generic component example in air-iop documentation release 1.2 | */
+   MAV_COMPONENT_ENUM_END=255, /*  | */
 } MAV_COMPONENT;
 #endif
 
